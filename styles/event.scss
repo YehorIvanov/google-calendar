@@ -1,0 +1,17 @@
+// стили отображаемого в календаре события
+.event {
+    border: 1px solid;
+    color: white;
+    background-color: #6495ed;
+    width: 120px;
+    border-radius: 5px;
+    z-index: 2;
+    &-title {
+    }
+    &-time{
+
+    }
+    &-description{
+
+    }
+}
