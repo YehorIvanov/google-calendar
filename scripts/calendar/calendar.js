@@ -30,6 +30,7 @@ export const renderWeek = () => {
       const day = generateDay();
       day.dataset.day = elem;
       calendarWeekElem.appendChild(day);
+      window.scrollTo(0, 530);
     });
   // console.log(week);
   // функция должна сгенерировать разметку недели в виде строки и вставить ее на страницу (в .calendar__week)

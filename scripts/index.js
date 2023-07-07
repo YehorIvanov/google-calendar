@@ -20,5 +20,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initEventForm();
   renderEvents();
-  window.scrollTo(0, 530);
+  
 });
