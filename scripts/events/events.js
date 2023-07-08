@@ -38,8 +38,9 @@ const createEventElement = (event) => {
   newEventElem.addEventListener("click", handleEventClick);
 
   document
-    .querySelector(`[data-day="${event.start.getDate()}"]`)
-    .querySelector(`[data-time="${event.start.getHours()}"]`)
+    .querySelector(
+      `[data-day="${event.start.getDate()}"] [data-time="${event.start.getHours()}"]`
+    )
     .appendChild(newEventElem);
 
   // ф-ция создает DOM элемент события

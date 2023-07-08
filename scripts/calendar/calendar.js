@@ -4,14 +4,24 @@ import { generateWeekRange } from "../common/time.utils.js";
 import { createNumbersArray } from "../common/createNumbersArray.js";
 import { getItem } from "../common/storage.js";
 
-export const renderRedLine = () => {
+const renderRedLine = () => {
+  const date = new Date();
+  const minutes = date.getMinutes();
+  const hours = date.getHours();
+  const day = date.getDate();
+
+  const container = document.querySelector(
+    `[data-day="${day}"] [data-time="${hours}"]`
+  );
   const redLineElem = document.createElement("div");
   redLineElem.classList.add("calendar__red-line");
-  redLineElem.style.top = `${new Date().getMinutes()}`;
-  document
-    .querySelector(`[data-day="${new Date().getDate()}"]`)
-    .querySelector(`[data-time="${new Date().getHours()}"]`)
-    .appendChild(redLineElem);
+  redLineElem.style.top = `${minutes}px`;
+  container.appendChild(redLineElem);
+
+  const redDotElem = document.createElement("div");
+  redDotElem.classList.add("calendar__red-dot");
+  redDotElem.style.top = `${minutes - 6}px`;
+  container.appendChild(redDotElem);
 };
 
 const generateDay = () => {
@@ -42,7 +52,8 @@ export const renderWeek = () => {
       calendarWeekElem.appendChild(day);
       window.scrollTo(0, 530);
     });
-  renderRedLine();
+  // renderRedLine();
+  setInterval(renderRedLine(), 60000);
   // console.log(week);
   // функция должна сгенерировать разметку недели в виде строки и вставить ее на страницу (в .calendar__week)
   // разметка недели состоит из 7 дней (.calendar__day) отображаемой недели

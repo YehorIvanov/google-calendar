@@ -21,6 +21,7 @@
   }
   &__day {
     width: 120px;
+    position: relative;
   }
   &__time-slot {
     height: 60px;
@@ -58,6 +59,14 @@
     background-color: red;
     height: 2px;
     position: relative;
+  }
+  &__red-dot {
+    width: 10px;
+    background-color: red;
+    height: 10px;
+    position: relative;
+    border-radius: 50%;
+    left: -5px;
   }
 }
 
