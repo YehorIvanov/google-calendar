@@ -4,6 +4,16 @@ import { generateWeekRange } from "../common/time.utils.js";
 import { createNumbersArray } from "../common/createNumbersArray.js";
 import { getItem } from "../common/storage.js";
 
+export const renderRedLine = () => {
+  const redLineElem = document.createElement("div");
+  redLineElem.classList.add("calendar__red-line");
+  redLineElem.style.top = `${new Date().getMinutes()}`;
+  document
+    .querySelector(`[data-day="${new Date().getDate()}"]`)
+    .querySelector(`[data-time="${new Date().getHours()}"]`)
+    .appendChild(redLineElem);
+};
+
 const generateDay = () => {
   const day = createNumbersArray(0, 23);
 
@@ -23,7 +33,7 @@ const generateDay = () => {
 export const renderWeek = () => {
   const calendarWeekElem = document.querySelector(".calendar__week");
   calendarWeekElem.innerHTML = "";
-  // const week = 
+  // const week =
   generateWeekRange(getItem("displayedWeekStart"))
     .map((elem) => elem.getDate())
     .forEach((elem) => {
@@ -32,6 +42,7 @@ export const renderWeek = () => {
       calendarWeekElem.appendChild(day);
       window.scrollTo(0, 530);
     });
+  renderRedLine();
   // console.log(week);
   // функция должна сгенерировать разметку недели в виде строки и вставить ее на страницу (в .calendar__week)
   // разметка недели состоит из 7 дней (.calendar__day) отображаемой недели

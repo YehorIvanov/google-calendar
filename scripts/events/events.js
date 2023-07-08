@@ -10,11 +10,9 @@ function handleEventClick(event) {
   // // установите eventIdToDelete с id события в storage
 
   if (event.target.closest(".event")) {
-    // console.log(event.target.closest(".event").dataset.eventId);
     openPopup(event.clientX, event.clientY);
     setItem("eventIdToDelete", event.target.closest(".event").dataset.eventId);
     event.stopPropagation();
-    // console.log(`to dell: ${getItem("eventIdToDelete")}`);
   }
 }
 

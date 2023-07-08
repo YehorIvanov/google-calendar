@@ -133,6 +133,12 @@
   align-items: center;
   width: 60px;
 }
+.calendar__red-line {
+  width: 100%;
+  background-color: red;
+  height: 2px;
+  position: relative;
+}
 
 .time-slot {
   height: 60px;
