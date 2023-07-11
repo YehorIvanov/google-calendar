@@ -1,15 +1,35 @@
-const modalElem = document.querySelector('.modal');
-const modalContentElem = document.querySelector('.modal__content');
+import { doc } from "prettier";
+
+const modalElem = document.querySelector(".modal");
+const modalContentElem = document.querySelector(".modal__content");
+
+function addTimeOptionsToElement(element) {
+  element.innerHTML = "";
+  for (let i = 0; i < 24; i++) {
+    for (let j = 0; j < 60; j += 15) {
+      const option = document.createElement("option");
+      option.value = `${i.toString().padStart(2, "0")}:${j
+        .toString()
+        .padStart(2, "0")}`;
+      element.appendChild(option);
+    }
+  }
+}
 
 export const openModal = () => {
-    // const modalElem = document.querySelector('.modal');
-    modalElem.classList.remove('hidden');
-    const createEventCloseBtnElem = document.querySelector('.create-event__close-btn');
-    createEventCloseBtnElem.addEventListener('click', closeModal);
+  const dateInputElem = document.querySelector('[type="date"]');
+  dateInputElem.value = "";
+  addTimeOptionsToElement(document.querySelector("#startTime"));
+  addTimeOptionsToElement(document.querySelector("#endTime"));
+  modalElem.classList.remove("hidden");
+  const createEventCloseBtnElem = document.querySelector(
+    ".create-event__close-btn"
+  );
+  createEventCloseBtnElem.addEventListener("click", closeModal);
 };
 export const closeModal = () => {
-    // const modalElem = document.querySelector('.modal');
-    modalElem.classList.add('hidden');
+  // const modalElem = document.querySelector('.modal');
+  modalElem.classList.add("hidden");
 };
 
 // опишите ф-ции openModal и closeModal

@@ -1,10 +1,10 @@
-import { getItem, setItem, storage } from '../common/storage.js';
-import { renderEvents } from './events.js';
-import { getDateTime } from '../common/time.utils.js';
-import { closeModal } from '../common/modal.js';
+import { getItem, setItem, storage } from "../common/storage.js";
+import { renderEvents } from "./events.js";
+import { getDateTime } from "../common/time.utils.js";
+import { closeModal } from "../common/modal.js";
 
-const eventFormElem = document.querySelector('.event-form');
-const closeEventFormBtn = document.querySelector('.create-event__close-btn');
+const eventFormElem = document.querySelector(".event-form");
+const closeEventFormBtn = document.querySelector(".create-event__close-btn");
 
 function clearEventForm() {
   // ф-ция должна очистить поля формы от значений
@@ -20,7 +20,8 @@ function onCloseEventForm() {
 function onCreateEvent(event) {
   event.preventDefault();
   const formData = Object.fromEntries(new FormData(eventFormElem));
-  const newEventsArr = getItem('events')
+  const newEventsArr = getItem("events");
+  console.log(formData.date);
   newEventsArr.push({
     id: Math.random(),
     title: formData.title,
@@ -28,7 +29,7 @@ function onCreateEvent(event) {
     start: getDateTime(formData.date, formData.startTime),
     end: getDateTime(formData.date, formData.endTime),
   });
-  setItem('events', newEventsArr);
+  setItem("events", newEventsArr);
   onCloseEventForm();
   renderEvents();
   // задача этой ф-ции только добавить новое событие в массив событий, что хранится в storage
@@ -44,6 +45,6 @@ function onCreateEvent(event) {
 
 export function initEventForm() {
   // подпишитесь на сабмит формы и на закрытие формы
-  eventFormElem.addEventListener('submit', onCreateEvent);
-  closeEventFormBtn.addEventListener('click',onCloseEventForm);
+  eventFormElem.addEventListener("submit", onCreateEvent);
+  closeEventFormBtn.addEventListener("click", onCloseEventForm);
 }

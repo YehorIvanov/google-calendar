@@ -1,7 +1,7 @@
 import { getItem, setItem } from "../common/storage.js";
 import shmoment from "../common/shmoment.js";
 import { openPopup, closePopup } from "../common/popup.js";
-
+import { isInDisplayedWeek }from "../common/time.utils.js"
 const weekElem = document.querySelector(".calendar__week");
 const deleteEventBtn = document.querySelector(".delete-event-btn");
 
@@ -36,12 +36,19 @@ const createEventElement = (event) => {
   newEventElem.style.top = `${event.start.getMinutes()}px`;
   newEventElem.style.height = `${(event.end - event.start) / (60 * 1000)}px`;
   newEventElem.addEventListener("click", handleEventClick);
-
+  // console.log(event.start.getDate());
+  // console.log(event.start.getHours());
+  // console.log(event);
   document
     .querySelector(
       `[data-day="${event.start.getDate()}"] [data-time="${event.start.getHours()}"]`
     )
     .appendChild(newEventElem);
+
+  // document
+  //   .querySelector(`[data-day="${event.start.getDate()}"]`)
+  //   .querySelector(`[data-time="${event.start.getHours()}"]`)
+  //   .appendChild(newEventElem);
 
   // ф-ция создает DOM элемент события
   // событие должно позиционироваться абсолютно внутри нужной ячейки времени внутри дня
@@ -58,9 +65,9 @@ export const renderEvents = () => {
   );
   const eventsToRender = getItem("events");
   eventsToRender
-    // .filter((elem) => {
-    //   return elem.start >= displayedWeekStart && elem.start < displayedWeekEnd;
-    // })
+    .filter((elem) => {
+      return isInDisplayedWeek(elem.start)
+    })
     .forEach((elem) => {
       createEventElement(elem);
     });

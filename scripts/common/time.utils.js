@@ -1,4 +1,5 @@
-import shmoment from './shmoment.js';
+import shmoment from "./shmoment.js";
+import { getItem } from "./storage.js";
 
 // вернет дату понедельника той недели, в которую входит переданный день
 export const getStartOfWeek = (date) => {
@@ -24,31 +25,31 @@ export const generateWeekRange = (startDate) => {
 
 // вернет объект даты по переданной дате '2000-01-01' и времени '21:00'
 export const getDateTime = (date, time) => {
-  const [hours, minutes] = time.split(':');
+  const [hours, minutes] = time.split(":");
   const withHours = new Date(new Date(date).setHours(Number(hours)));
   const withMinutes = new Date(new Date(withHours).setMinutes(Number(minutes)));
   return withMinutes;
 };
 
 const monthsNames = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 // вернет месяц и год для недели, в которой находится переданный день
 export const getDisplayedMonth = (date) => {
   const weekStart = getStartOfWeek(date);
-  const weekEnd = shmoment(date).add('days', 6).result();
+  const weekEnd = shmoment(date).add("days", 6).result();
   const startMonth = weekStart.getMonth();
   const startYear = weekStart.getFullYear();
   const endMonth = weekEnd.getMonth();
@@ -62,3 +63,16 @@ export const getDisplayedMonth = (date) => {
     ? `${monthsNames[startMonth]} - ${monthsNames[endMonth]} ${startYear}`
     : `${monthsNames[startMonth]} ${startYear} - ${monthsNames[endMonth]} ${endYear}`;
 };
+
+const displayedWeekStart = new Date(getItem("displayedWeekStart"));
+const displayedWeekEnd = new Date(
+  displayedWeekStart.getTime() + 1000 * 60 * 60 * 24 * 7
+);
+ export const isInDisplayedWeek = (date) => {
+  const displayedWeekStart = new Date(getItem("displayedWeekStart"));
+  const displayedWeekEnd = new Date(
+    displayedWeekStart.getTime() + 1000 * 60 * 60 * 24 * 7
+  );
+  return date >= displayedWeekStart && date < displayedWeekEnd;
+};
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -63,9 +63,11 @@
             />
             <div class="event-form__time">
               <input type="date" name="date" class="event-form__field" />
-              <input type="time" name="startTime" class="event-form__field" />
+              <input type="time" name="startTime" list="startTime" class="event-form__field" />
+              <datalist id="startTime"></datalist>
               <span>-</span>
-              <input type="time" name="endTime" class="event-form__field" />
+              <input type="time" name="endTime" list="endTime" class="event-form__field" />
+              <datalist id="endTime"></datalist>
             </div>
             <textarea
               name="description"
