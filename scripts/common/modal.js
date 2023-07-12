@@ -1,7 +1,5 @@
-import { doc } from "prettier";
-
 const modalElem = document.querySelector(".modal");
-const modalContentElem = document.querySelector(".modal__content");
+// const modalContentElem = document.querySelector(".modal__content");
 
 function addTimeOptionsToElement(element) {
   element.innerHTML = "";
@@ -16,9 +14,23 @@ function addTimeOptionsToElement(element) {
   }
 }
 
-export const openModal = () => {
+export const openModal = (event, date = new Date()) => {
   const dateInputElem = document.querySelector('[type="date"]');
-  dateInputElem.value = "";
+  dateInputElem.value = `${date.getFullYear()}-${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+
+  const startTimeInputElem = document.querySelector('[name="startTime"]');
+  startTimeInputElem.value = `${date
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:00`;
+
+  const endTimeInputElem = document.querySelector('[name="endTime"]');
+  endTimeInputElem.value = `${(date.getHours() + 1)
+    .toString()
+    .padStart(2, "0")}:00`;
+
   addTimeOptionsToElement(document.querySelector("#startTime"));
   addTimeOptionsToElement(document.querySelector("#endTime"));
   modalElem.classList.remove("hidden");

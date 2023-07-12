@@ -21,7 +21,6 @@ function onCreateEvent(event) {
   event.preventDefault();
   const formData = Object.fromEntries(new FormData(eventFormElem));
   const newEventsArr = getItem("events");
-  console.log(formData.date);
   newEventsArr.push({
     id: Math.random(),
     title: formData.title,
