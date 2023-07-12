@@ -13,20 +13,12 @@ import { renderEvents } from "./events/events.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // инициализация всех элементов
-  renderTimescale();
   setItem("displayedWeekStart", getStartOfWeek(new Date()));
-  renderWeek();
   renderHeader();
+  renderTimescale();
+  renderWeek();
   initNavigation();
   initEventForm();
   renderEvents();
 });
 
-function run() {
-  var a = 0,
-    b = 1;
-
-  if (a == b) {
-    return c;
-  }
-}

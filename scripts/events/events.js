@@ -5,6 +5,8 @@ import { isInDisplayedWeek } from "../common/time.utils.js";
 import { openModal } from "../common/modal.js";
 const weekElem = document.querySelector(".calendar__week");
 const deleteEventBtn = document.querySelector(".delete-event-btn");
+const editEventBtn = document.querySelector(".edit-event-btn");
+
 
 function handleEventClick(event) {
   // // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
@@ -18,7 +20,12 @@ function handleEventClick(event) {
   if (event.target.closest(".calendar__time-slot")) {
     const date = new Date();
     date.setHours(event.target.dataset.time.toString().padStart(2, "0"));
-    date.setDate(getItem("displayedWeekStart").getDate() + +event.target.parentNode.dataset.day -1);
+    date.setMonth(getItem("displayedWeekStart").getMonth());
+    date.setDate(
+      getItem("displayedWeekStart").getDate() +
+        +event.target.parentNode.dataset.day -
+        1
+    );
     openModal(event, date);
   }
 }
@@ -43,10 +50,6 @@ const createEventElement = (event) => {
   newEventElem.style.top = `${event.start.getMinutes()}px`;
   newEventElem.style.height = `${(event.end - event.start) / (60 * 1000)}px`;
   newEventElem.addEventListener("click", handleEventClick);
-
-  console.log(event.start.getDay());
-  console.log(event.start.getHours());
-  console.log(event);
 
   document
     .querySelector(
@@ -103,5 +106,5 @@ function onDeleteEvent() {
 }
 
 deleteEventBtn.addEventListener("click", onDeleteEvent);
-
+// editEventBtn.addEventListener("click", onEditeEvent);
 weekElem.addEventListener("click", handleEventClick);

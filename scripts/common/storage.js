@@ -9,15 +9,15 @@ export let storage = {
       id: 0.7520027086457333, // id понадобится для работы с событиями
       title: "Title",
       description: "Some description",
-      start: new Date("2023-07-05T01:10:00.000Z"),
-      end: new Date("2023-07-05T04:30:00.000Z"),
+      start: new Date("2023-07-12T12:10:00.000Z"),
+      end: new Date("2023-07-05T14:30:00.000Z"),
     },
     {
       id: 0.7520027086457353, // id понадобится для работы с событиями
       title: "Title",
       description: "Some description",
-      start: new Date("2023-07-06T04:10:00.000Z"),
-      end: new Date("2023-07-06T06:30:00.000Z"),
+      start: new Date("2023-07-13T04:10:00.000Z"),
+      end: new Date("2023-07-13T06:30:00.000Z"),
     },
   ],
 

@@ -47,3 +47,4 @@ export function initEventForm() {
   eventFormElem.addEventListener("submit", onCreateEvent);
   closeEventFormBtn.addEventListener("click", onCloseEventForm);
 }
+ export const onEditEvent = () => {};
