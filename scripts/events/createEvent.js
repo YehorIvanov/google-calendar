@@ -7,15 +7,33 @@ const eventFormElem = document.querySelector(".event-form");
 const closeEventFormBtn = document.querySelector(".create-event__close-btn");
 
 function clearEventForm() {
-  // ф-ция должна очистить поля формы от значений
   eventFormElem.reset();
 }
 
 function onCloseEventForm() {
   closeModal();
   clearEventForm();
-  // здесь нужно закрыть модальное окно и очистить форму
 }
+
+const isValidEvent = (newEventObj, eventsArr) => {
+  console.dir(newEventObj);
+  console.log(newEventObj.start < newEventObj.end); // The end time must be after the start time
+  console.log(newEventObj.end - newEventObj.start < 21600001); // The event cannot last more then 6 hours
+  console.log(
+    newEventObj.start.getDate() === newEventObj.end.getDate() &&
+      newEventObj.start.getMonth() === newEventObj.end.getMonth() &&
+      newEventObj.start.getFullYear() === newEventObj.end.getFullYear()
+  ); // The event must start and end within the same day
+  console.log(
+    eventsArr
+      .filter((elem) => {
+        return elem.id !== newEventObj.id;
+      })
+      .every((elem) => {
+        return elem.start >= newEventObj.end && elem.end <= newEventObj.start;
+      })
+  ); //two events cannot overlap in time
+};
 
 function onCreateEvent(event) {
   event.preventDefault();
@@ -35,10 +53,9 @@ function onCreateEvent(event) {
     const foundIndex = eventsArr.findIndex(
       (event) => event.id === newEventObj.id
     );
-    console.log(foundIndex);
     eventsArr[foundIndex] = newEventObj;
-    console.log(eventsArr);
   }
+  isValidEvent(newEventObj, eventsArr);
   setItem("events", eventsArr);
   onCloseEventForm();
   renderEvents();
@@ -58,4 +75,3 @@ export function initEventForm() {
   eventFormElem.addEventListener("submit", onCreateEvent);
   closeEventFormBtn.addEventListener("click", onCloseEventForm);
 }
-
