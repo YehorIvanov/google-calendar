@@ -20,15 +20,26 @@ function onCloseEventForm() {
 function onCreateEvent(event) {
   event.preventDefault();
   const formData = Object.fromEntries(new FormData(eventFormElem));
-  const newEventsArr = getItem("events");
-  newEventsArr.push({
-    id: Math.random(),
+  const eventsArr = getItem("events");
+  const newEventObj = {
+    id: +formData.id,
     title: formData.title,
     description: formData.description,
     start: getDateTime(formData.date, formData.startTime),
     end: getDateTime(formData.date, formData.endTime),
-  });
-  setItem("events", newEventsArr);
+  };
+  if (!newEventObj.id) {
+    newEventObj.id = Math.random();
+    eventsArr.push(newEventObj);
+  } else {
+    const foundIndex = eventsArr.findIndex(
+      (event) => event.id === newEventObj.id
+    );
+    console.log(foundIndex);
+    eventsArr[foundIndex] = newEventObj;
+    console.log(eventsArr);
+  }
+  setItem("events", eventsArr);
   onCloseEventForm();
   renderEvents();
   // задача этой ф-ции только добавить новое событие в массив событий, что хранится в storage
@@ -47,4 +58,4 @@ export function initEventForm() {
   eventFormElem.addEventListener("submit", onCreateEvent);
   closeEventFormBtn.addEventListener("click", onCloseEventForm);
 }
- export const onEditEvent = () => {};
+

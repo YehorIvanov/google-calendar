@@ -14,22 +14,44 @@ function addTimeOptionsToElement(element) {
   }
 }
 
-export const openModal = (event, date = new Date()) => {
+export const openModal = (
+  event,
+  {
+    id,
+    title = "",
+    start = new Date(),
+    end = new Date(new Date().setHours(new Date().getHours() + 1)),
+    description = "",
+  }
+) => {
+  console.table(id, title, start, end, description);
+  if (id) {
+    const idInputElem = document.querySelector('[name="id"]');
+    idInputElem.value = id;
+  }
+
   const dateInputElem = document.querySelector('[type="date"]');
-  dateInputElem.value = `${date.getFullYear()}-${(date.getMonth() + 1)
+  dateInputElem.value = `${start.getFullYear()}-${(start.getMonth() + 1)
     .toString()
-    .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+    .padStart(2, "0")}-${start.getDate().toString().padStart(2, "0")}`;
 
   const startTimeInputElem = document.querySelector('[name="startTime"]');
-  startTimeInputElem.value = `${date
+  startTimeInputElem.value = `${start
     .getHours()
     .toString()
     .padStart(2, "0")}:00`;
 
   const endTimeInputElem = document.querySelector('[name="endTime"]');
-  endTimeInputElem.value = `${(date.getHours() + 1)
-    .toString()
-    .padStart(2, "0")}:00`;
+  endTimeInputElem.value = `${end.getHours().toString().padStart(2, "0")}:00`;
+
+  const titleInputElem = document.querySelector('[name="title"]');
+  titleInputElem.value = title;
+
+  const descriptionInputElem = document.querySelector('[name="description"]');
+  descriptionInputElem.value = description;
+
+  const eventFormSubmitElem = document.querySelector(".event-form__submit-btn");
+  eventFormSubmitElem.innerHTML = "Save";
 
   addTimeOptionsToElement(document.querySelector("#startTime"));
   addTimeOptionsToElement(document.querySelector("#endTime"));

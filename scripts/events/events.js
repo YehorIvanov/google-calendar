@@ -7,7 +7,6 @@ const weekElem = document.querySelector(".calendar__week");
 const deleteEventBtn = document.querySelector(".delete-event-btn");
 const editEventBtn = document.querySelector(".edit-event-btn");
 
-
 function handleEventClick(event) {
   // // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
   // // установите eventIdToDelete с id события в storage
@@ -16,17 +15,20 @@ function handleEventClick(event) {
     openPopup(event.clientX, event.clientY);
     setItem("eventIdToDelete", event.target.closest(".event").dataset.eventId);
     event.stopPropagation();
-  }
-  if (event.target.closest(".calendar__time-slot")) {
-    const date = new Date();
-    date.setHours(event.target.dataset.time.toString().padStart(2, "0"));
-    date.setMonth(getItem("displayedWeekStart").getMonth());
-    date.setDate(
+  } else if (event.target.closest(".calendar__time-slot")) {
+    const startDate = new Date();
+    startDate.setHours(event.target.dataset.time.toString().padStart(2, "0"));
+    startDate.setMonth(getItem("displayedWeekStart").getMonth());
+    startDate.setDate(
       getItem("displayedWeekStart").getDate() +
         +event.target.parentNode.dataset.day -
         1
     );
-    openModal(event, date);
+    const endDate = new Date(startDate);
+    endDate.setHours(parseInt(event.target.dataset.time) + 1);
+    console.log(endDate);
+    console.log(event.target.dataset.time);
+    openModal(event, { start: startDate, end: endDate });
   }
 }
 
@@ -105,6 +107,17 @@ function onDeleteEvent() {
   // перерисовать события на странице в соответствии с новым списком событий в storage (renderEvents)
 }
 
+function onEditeEvent(event) {
+  event.stopPropagation();
+  const eventsArr = getItem("events");
+  const eventIdToEdit = getItem("eventIdToDelete");
+  const eventToEdite = eventsArr.filter((elem) => {
+    return elem.id.toString() === eventIdToEdit.toString();
+  });
+  closePopup();
+  openModal(event, eventToEdite[0]);
+}
+
 deleteEventBtn.addEventListener("click", onDeleteEvent);
-// editEventBtn.addEventListener("click", onEditeEvent);
+editEventBtn.addEventListener("click", onEditeEvent);
 weekElem.addEventListener("click", handleEventClick);

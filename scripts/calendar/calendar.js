@@ -7,7 +7,11 @@ const renderRedLine = () => {
   if (isInDisplayedWeek(date)) {
     const minutes = date.getMinutes();
     const hours = date.getHours();
-    const day = date.getDay();
+    // const day = date.getDay();
+    let day = date.getDay();
+    if (day === 0) {
+      day = 7;
+    }
     const container = document.querySelector(
       `[data-day="${day}"] [data-time="${hours}"]`
     );
@@ -42,14 +46,14 @@ export const renderWeek = () => {
   calendarWeekElem.innerHTML = "";
 
   generateWeekRange(getItem("displayedWeekStart"))
-  .map((elem) => elem.getDay())
-  .forEach((elem) => {
-    const day = generateDay();
-    // day.dataset.day = elem;
-    elem === 0 ? day.dataset.day = 7 : day.dataset.day = elem;
-    calendarWeekElem.appendChild(day);
-    window.scrollTo(0, 530);
-  });
+    .map((elem) => elem.getDay())
+    .forEach((elem) => {
+      const day = generateDay();
+      // day.dataset.day = elem;
+      elem === 0 ? (day.dataset.day = 7) : (day.dataset.day = elem);
+      calendarWeekElem.appendChild(day);
+      window.scrollTo(0, 530);
+    });
 
   // generateWeekRange(getItem("displayedWeekStart"))
   //   .map((elem) => elem.getDate())
