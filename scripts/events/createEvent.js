@@ -16,23 +16,51 @@ function onCloseEventForm() {
 }
 
 const isValidEvent = (newEventObj, eventsArr) => {
-  console.dir(newEventObj);
-  console.log(newEventObj.start < newEventObj.end); // The end time must be after the start time
-  console.log(newEventObj.end - newEventObj.start < 21600001); // The event cannot last more then 6 hours
-  console.log(
+  let alertMassage = "";
+  alertMassage = alertMassage.concat(
+    newEventObj.title ? "" : "Title is requared \n"
+  );
+  alertMassage = alertMassage.concat(
+    newEventObj.start < newEventObj.end
+      ? ""
+      : "The end time must be after the start time"
+  );
+  alertMassage = alertMassage.concat(
+    newEventObj.end - newEventObj.start < 21600001
+      ? ""
+      : "The event cannot last more then 6 hours"
+  );
+  alertMassage = alertMassage.concat(
     newEventObj.start.getDate() === newEventObj.end.getDate() &&
       newEventObj.start.getMonth() === newEventObj.end.getMonth() &&
       newEventObj.start.getFullYear() === newEventObj.end.getFullYear()
-  ); // The event must start and end within the same day
-  console.log(
+      ? ""
+      : "The event must start and end within the same day"
+  );
+  alertMassage = alertMassage.concat(
     eventsArr
       .filter((elem) => {
         return elem.id !== newEventObj.id;
       })
       .every((elem) => {
-        return elem.start >= newEventObj.end && elem.end <= newEventObj.start;
+        return elem.start >= newEventObj.end || elem.end <= newEventObj.start;
       })
-  ); //two events cannot overlap in time
+      ? ""
+      : "Two events cannot overlap in time"
+  );
+  alertMassage = alertMassage.concat(
+    newEventObj.start.getMinutes() % 15 !== 0 ||
+      newEventObj.end.getMinutes() % 15 !== 0
+      ? "The start of the event and the duration must be a multiple of 15 minutes"
+      : ""
+  );
+  // alert(alertMassage);
+  // console.log(!!alertMassage);
+  if (!alertMassage) {
+    return true;
+  }
+  alert(alertMassage);
+  return false;
 };
 
 function onCreateEvent(event) {
@@ -46,19 +74,23 @@ function onCreateEvent(event) {
     start: getDateTime(formData.date, formData.startTime),
     end: getDateTime(formData.date, formData.endTime),
   };
-  if (!newEventObj.id) {
-    newEventObj.id = Math.random();
-    eventsArr.push(newEventObj);
-  } else {
-    const foundIndex = eventsArr.findIndex(
-      (event) => event.id === newEventObj.id
-    );
-    eventsArr[foundIndex] = newEventObj;
+
+  if (isValidEvent(newEventObj, eventsArr)) {
+    console.log("valid");
+    if (!newEventObj.id) {
+      newEventObj.id = Math.random();
+      eventsArr.push(newEventObj);
+    } else {
+      const foundIndex = eventsArr.findIndex(
+        (event) => event.id === newEventObj.id
+      );
+      eventsArr[foundIndex] = newEventObj;
+    }
+    setItem("events", eventsArr);
+    onCloseEventForm();
+    renderEvents();
   }
-  isValidEvent(newEventObj, eventsArr);
-  setItem("events", eventsArr);
-  onCloseEventForm();
-  renderEvents();
+
   // задача этой ф-ции только добавить новое событие в массив событий, что хранится в storage
   // создавать или менять DOM элементы здесь не нужно. Этим займутся другие ф-ции
   // при подтверждении формы нужно считать данные с формы
