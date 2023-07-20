@@ -4,6 +4,14 @@ import { createNumbersArray } from "../common/createNumbersArray.js";
 
 const renderRedLine = () => {
   const date = new Date();
+  console.log(`${date.getHours()}:${date.getMinutes()}`);
+
+  let toRemoveElem = document.querySelector(".calendar__red-line");
+  toRemoveElem ? toRemoveElem.remove() : toRemoveElem;
+  toRemoveElem = document.querySelector(".calendar__red-dot");
+  toRemoveElem ? toRemoveElem.remove() : toRemoveElem;
+
+  // document.querySelector(".calendar__red-dot").remove();
   if (isInDisplayedWeek(date)) {
     const minutes = date.getMinutes();
     const hours = date.getHours();
