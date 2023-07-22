@@ -24,7 +24,6 @@ export const openModal = (
     description = "",
   }
 ) => {
-  console.table(id, title, start, end, description);
   if (id) {
     const idInputElem = document.querySelector('[name="id"]');
     idInputElem.value = id;
@@ -62,10 +61,5 @@ export const openModal = (
   createEventCloseBtnElem.addEventListener("click", closeModal);
 };
 export const closeModal = () => {
-  // const modalElem = document.querySelector('.modal');
   modalElem.classList.add("hidden");
 };
-
-// опишите ф-ции openModal и closeModal
-// модальное окно работает похожим на попап образом
-// отличие в том, что попап отображается в месте клика, а модальное окно - по центру экрана

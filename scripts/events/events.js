@@ -1,8 +1,9 @@
 import { getItem, setItem } from "../common/storage.js";
-import shmoment from "../common/shmoment.js";
 import { openPopup, closePopup } from "../common/popup.js";
 import { isInDisplayedWeek } from "../common/time.utils.js";
 import { openModal } from "../common/modal.js";
+import { isDeletable } from "./validation.js";
+
 const weekElem = document.querySelector(".calendar__week");
 const deleteEventBtn = document.querySelector(".delete-event-btn");
 const editEventBtn = document.querySelector(".edit-event-btn");
@@ -26,8 +27,6 @@ function handleEventClick(event) {
     );
     const endDate = new Date(startDate);
     endDate.setHours(parseInt(event.target.dataset.time) + 1);
-    console.log(endDate);
-    console.log(event.target.dataset.time);
     openModal(event, { start: startDate, end: endDate });
   }
 }
@@ -69,9 +68,9 @@ export const renderEvents = () => {
   removeEventsFromCalendar();
 
   const displayedWeekStart = new Date(getItem("displayedWeekStart"));
-  const displayedWeekEnd = new Date(
-    displayedWeekStart.getTime() + 1000 * 60 * 60 * 24 * 7
-  );
+  // const displayedWeekEnd = new Date(
+  //   displayedWeekStart.getTime() + 1000 * 60 * 60 * 24 * 7
+  // );
   const eventsToRender = getItem("events");
   eventsToRender
     .filter((elem) => {
@@ -93,14 +92,16 @@ export const renderEvents = () => {
 function onDeleteEvent() {
   const eventsArr = getItem("events");
   const eventIdToDelete = getItem("eventIdToDelete");
-  const newEventsArr = eventsArr.filter((elem) => {
-    return elem.id.toString() !== eventIdToDelete.toString();
-  });
-
-  setItem("events", newEventsArr);
-  closePopup();
-  renderEvents();
-
+  if (isDeletable(eventsArr, eventIdToDelete)) {
+    const newEventsArr = eventsArr.filter((elem) => {
+      return elem.id.toString() !== eventIdToDelete.toString();
+    });
+    setItem("events", newEventsArr);
+    closePopup();
+    renderEvents();
+  } else {
+    alert("Event start and duration must be a multiple of 15 minutes");
+  }
   // достаем из storage массив событий и eventIdToDelete
   // удаляем из массива нужное событие и записываем в storage новый массив
   // закрыть попап

@@ -4,18 +4,15 @@ import { createNumbersArray } from "../common/createNumbersArray.js";
 
 const renderRedLine = () => {
   const date = new Date();
-  console.log(`${date.getHours()}:${date.getMinutes()}`);
 
   let toRemoveElem = document.querySelector(".calendar__red-line");
   toRemoveElem ? toRemoveElem.remove() : toRemoveElem;
   toRemoveElem = document.querySelector(".calendar__red-dot");
   toRemoveElem ? toRemoveElem.remove() : toRemoveElem;
 
-  // document.querySelector(".calendar__red-dot").remove();
   if (isInDisplayedWeek(date)) {
     const minutes = date.getMinutes();
     const hours = date.getHours();
-    // const day = date.getDay();
     let day = date.getDay();
     if (day === 0) {
       day = 7;
@@ -52,7 +49,6 @@ const generateDay = () => {
 export const renderWeek = () => {
   const calendarWeekElem = document.querySelector(".calendar__week");
   calendarWeekElem.innerHTML = "";
-
   generateWeekRange(getItem("displayedWeekStart"))
     .map((elem) => elem.getDay())
     .forEach((elem) => {
@@ -63,16 +59,8 @@ export const renderWeek = () => {
       window.scrollTo(0, 530);
     });
 
-  // generateWeekRange(getItem("displayedWeekStart"))
-  //   .map((elem) => elem.getDate())
-  //   .forEach((elem) => {
-  //     const day = generateDay();
-  //     day.dataset.day = elem;
-  //     calendarWeekElem.appendChild(day);
-  //     window.scrollTo(0, 530);
-  //   });
-  // renderRedLine();
-  setInterval(renderRedLine(), 60000);
+  renderRedLine();
+  setInterval(renderRedLine, 60000);
   // console.log(week);
   // функция должна сгенерировать разметку недели в виде строки и вставить ее на страницу (в .calendar__week)
   // разметка недели состоит из 7 дней (.calendar__day) отображаемой недели
