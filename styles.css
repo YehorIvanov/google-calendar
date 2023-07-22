@@ -157,6 +157,16 @@
   position: relative;
 }
 
+.day-label__day-namber_current {
+  background-color: #1a73e8;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+}
+
 .event {
   border: 1px solid;
   color: white;
@@ -172,7 +182,7 @@
 body {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
-  color: gray;
+  color: grey;
   border-color: grey;
 }
 
