@@ -7,13 +7,12 @@
 @import "event.scss";
 @import "variables.scss";
 
-
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-size: 18px;
+  font-size: $main-font-size;
   font-family: "Roboto", sans-serif;
   color: $main-color;
   border-color: $main-color;
