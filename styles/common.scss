@@ -1,13 +1,17 @@
 @import "variables.scss";
 
 .button {
-  height: 40px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  height: ($main-font-size * 2);
+  border-radius: $main-border-radius;
+  border: 1px solid $main-color;
   outline: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: $main-font-size;
   font-weight: 500;
+  color: $main-color;
+  background-color: $main-bg-color;
+  padding-left: $main-font-size;
+  padding-right: $main-font-size;
 }
 
 .icon-button {
@@ -15,6 +19,7 @@
   border: none;
   cursor: pointer;
   background: transparent;
+  color: $main-color;
 }
 
 .modal {
@@ -24,10 +29,10 @@
   align-items: center;
 
   &__content {
-    background: #fff;
-    padding: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background: $main-bg-color;
+    padding: $main-font-size;
+    border: 1px solid;
+    border-radius: $modal-border-radius;
   }
 }
 
@@ -37,17 +42,17 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: $main-color;
   z-index: 10;
 }
 
 .popup {
   &__content {
     position: absolute;
-    background: #fff;
-    padding: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background: $main-bg-color;
+    padding: $main-font-size;
+    border: 1px solid;
+    border-radius: $modal-border-radius;
   }
 }
 

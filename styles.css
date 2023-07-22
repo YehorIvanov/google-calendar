@@ -2,18 +2,22 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  width: 63vw;
-  margin-left: 17vw;
+  width: 100%;
+  margin: 18px;
 }
 
 .button {
-  height: 40px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  height: 36px;
+  border-radius: 4.5px;
+  border: 1px solid rgb(112, 117, 122);
   outline: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
+  color: rgb(112, 117, 122);
+  background-color: white;
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
 .icon-button {
@@ -21,6 +25,7 @@
   border: none;
   cursor: pointer;
   background: transparent;
+  color: rgb(112, 117, 122);
 }
 
 .modal {
@@ -30,10 +35,10 @@
   align-items: center;
 }
 .modal__content {
-  background: #fff;
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background: white;
+  padding: 18px;
+  border: 1px solid;
+  border-radius: 9px;
 }
 
 .overlay {
@@ -42,16 +47,16 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(204, 204, 204, 0.2705882353);
+  background-color: rgb(112, 117, 122);
   z-index: 10;
 }
 
 .popup__content {
   position: absolute;
-  background: #fff;
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background: white;
+  padding: 18px;
+  border: 1px solid;
+  border-radius: 9px;
 }
 
 .hidden {
@@ -66,9 +71,10 @@
   position: fixed;
   top: 0;
   z-index: 3;
-  background-color: #fff;
-  width: inherit;
-  color: black;
+  background-color: white;
+  width: 100%;
+  color: rgb(112, 117, 122);
+  border-bottom: 1px solid;
 }
 
 .navigation {
@@ -79,29 +85,60 @@
 .navigation > * {
   margin-left: 10px;
 }
+.navigation__today-btn {
+  margin-left: 18px;
+}
+.navigation__nav-icon {
+  margin-left: 18px;
+}
+.navigation__displayed-month {
+  font-size: 22.5px;
+  margin-left: 18px;
+}
+
+.create-event-btn {
+  border-radius: 18px;
+}
+.create-event-btn__icon {
+  padding-right: 9px;
+}
 
 .calendar {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .calendar__body {
   display: flex;
   flex-direction: row;
+  width: 100%;
+}
+.calendar__header {
+  display: flex;
+  flex-direction: row;
+  padding-left: 60px;
+  position: fixed;
+  top: 60px;
+  background-color: white;
+  z-index: 3;
+  width: 100%;
 }
 .calendar__week-container {
   display: flex;
   flex-direction: row;
   position: relative;
   top: 150px;
+  width: 100%;
 }
 .calendar__week {
   border-left: 1px solid;
   border-top: 1px solid;
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 .calendar__day {
-  width: 120px;
+  width: 15%;
   position: relative;
 }
 .calendar__time-slot {
@@ -110,19 +147,9 @@
   border-right: 1px solid;
   position: relative;
 }
-.calendar__header {
-  display: flex;
-  flex-direction: row;
-  padding-left: 60px;
-  padding-right: 2px;
-  position: fixed;
-  top: 60px;
-  background-color: white;
-  z-index: 3;
-}
 .calendar__day-label {
   height: 90px;
-  width: 120px;
+  width: 15%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -158,17 +185,17 @@
 }
 
 .day-label__day-name {
-  font-size: 14px;
+  font-size: 13.5px;
 }
 .day-label__day-namber {
-  font-size: 22px;
+  font-size: 22.5px;
 }
 .day-label__day-namber_current {
   background-color: #1a73e8;
   border-radius: 50%;
-  height: 44px;
-  width: 44px;
-  line-height: 44px;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
   text-align: center;
   color: white;
 }
@@ -188,8 +215,8 @@
 body {
   font-size: 18px;
   font-family: "Roboto", sans-serif;
-  color: rgb(60, 64, 67);
-  border-color: rgb(60, 64, 67);
+  color: rgb(112, 117, 122);
+  border-color: rgb(112, 117, 122);
 }
 
 /*# sourceMappingURL=styles.css.map */

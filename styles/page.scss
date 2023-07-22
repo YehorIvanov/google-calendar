@@ -1,7 +1,9 @@
+@import "variables.scss";
+
 .page {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  width: 63vw;
-  margin-left: 17vw;
+  width: 100%;
+  margin: $main-font-size;
 }

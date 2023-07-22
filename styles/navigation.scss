@@ -1,23 +1,39 @@
 // стили навигации
 .header {
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    padding-left: 60px;
-    position: fixed;
-    top: 0;
-    z-index: 3;
-    background-color: #fff;
-    width: inherit;
-    color: black;
-
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  padding-left: 60px;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  background-color: $main-bg-color;
+  width: 100%;
+  color: $main-color;
+  border-bottom: 1px solid;
 }
 .navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    & > * {
-        margin-left: 10px;
-    }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  & > * {
+    margin-left: 10px;
+  }
+  &__today-btn {
+    margin-left: $main-font-size;
+  }
+  &__nav-icon {
+    margin-left: $main-font-size;
+  }
+  &__displayed-month {
+    font-size: $hier-font-size;
+    margin-left: $main-font-size;
+  }
 }
 
+.create-event-btn {
+  border-radius: $main-font-size;
+  &__icon {
+    padding-right: ($main-font-size / 2);
+  }
+}

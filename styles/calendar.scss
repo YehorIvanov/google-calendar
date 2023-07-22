@@ -4,24 +4,39 @@
 .calendar {
   display: flex;
   flex-direction: column;
+  width: 100%;
   &__body {
     display: flex;
     flex-direction: row;
+    width: 100%;
+  }
+  &__header {
+    display: flex;
+    flex-direction: row;
+    padding-left: 60px;
+    // padding-right: 2px;
+    position: fixed;
+    top: 60px;
+    background-color: $main-bg-color;
+    z-index: 3;
+    width: 100%;
   }
   &__week-container {
     display: flex;
     flex-direction: row;
     position: relative;
     top: (60px + (5 * $main-font-size));
+    width: 100%;
   }
   &__week {
     border-left: 1px solid;
     border-top: 1px solid;
     display: flex;
     flex-direction: row;
+    width: 100%;
   }
   &__day {
-    width: 120px;
+    width: 15%;
     position: relative;
   }
   &__time-slot {
@@ -30,19 +45,9 @@
     border-right: 1px solid;
     position: relative;
   }
-  &__header {
-    display: flex;
-    flex-direction: row;
-    padding-left: 60px;
-    padding-right: 2px;
-    position: fixed;
-    top: 60px;
-    background-color: white;
-    z-index: 3;
-  }
   &__day-label {
     height: (5 * $main-font-size);
-    width: 120px;
+    width: 15%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -56,13 +61,13 @@
   }
   &__red-line {
     width: 100%;
-    background-color: red;
+    background-color: $red-color;
     height: 2px;
     position: relative;
   }
   &__red-dot {
     width: 10px;
-    background-color: red;
+    background-color: $red-color;
     height: 10px;
     position: relative;
     border-radius: 50%;
@@ -91,7 +96,7 @@
       width: (2 * $hier-font-size);
       line-height: (2 * $hier-font-size);
       text-align: center;
-      color: white;
+      color: $main-bg-color;
     }
   }
 }
