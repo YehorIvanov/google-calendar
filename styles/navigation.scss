@@ -1,6 +1,7 @@
 // стили навигации
 .header {
   display: flex;
+  //   flex-wrap: wrap;
   flex-direction: row;
   padding: $main-font-size;
   padding-left: (60px + $main-font-size);
@@ -34,6 +35,12 @@
 .create-event-btn {
   border-radius: $main-font-size;
   &__icon {
-    padding-right: ($main-font-size / 2);
+  }
+  &__text {
+    padding-left: ($main-font-size / 2);
+    
+    @media screen and (max-width: 560px) {
+      display: none;
+    }
   }
 }

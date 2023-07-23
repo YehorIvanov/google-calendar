@@ -9,15 +9,15 @@
 .button {
   height: 36px;
   border-radius: 4.5px;
-  border: 1px solid rgb(112, 117, 122);
+  border: 1px solid;
   outline: none;
   cursor: pointer;
   font-size: 18px;
   font-weight: 500;
   color: rgb(112, 117, 122);
   background-color: white;
-  padding-left: 18px;
-  padding-right: 18px;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 
 .icon-button {
@@ -39,6 +39,7 @@
   padding: 18px;
   border: 1px solid;
   border-radius: 9px;
+  width: 30%;
 }
 
 .overlay {
@@ -47,7 +48,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(112, 117, 122);
+  background-color: rgba(112, 117, 122, 0.3);
   z-index: 10;
 }
 
@@ -99,8 +100,13 @@
 .create-event-btn {
   border-radius: 18px;
 }
-.create-event-btn__icon {
-  padding-right: 9px;
+.create-event-btn__text {
+  padding-left: 9px;
+}
+@media screen and (max-width: 560px) {
+  .create-event-btn__text {
+    display: none;
+  }
 }
 
 .calendar {
@@ -202,6 +208,62 @@
   line-height: 45px;
   text-align: center;
   color: white;
+}
+
+.create-event {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.create-event__close-btn {
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  border: none;
+  transform: rotate(45deg);
+  font-size: 22.5px;
+  color: rgb(112, 117, 122);
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  height: 160;
+  flex-wrap: wrap;
+}
+.event-form__field {
+  margin-left: 18px;
+  margin-top: 18px;
+  border: none;
+  border-bottom: 2px solid rgb(112, 117, 122);
+  color: rgb(112, 117, 122);
+  height: 36px;
+  width: auto;
+}
+.event-form__field:last-of-type[type=text] {
+  height: 72px;
+}
+.event-form__field:hover {
+  border: none;
+  border-bottom: 2px solid #1a73e8;
+}
+.event-form__field:focus {
+  border: none;
+  border-bottom: 2px solid #1a73e8;
+  outline: none;
+}
+.event-form__time {
+  width: 100%;
+  height: 54px;
+  display: flex;
+  flex-direction: row;
+}
+.event-form__submit-btn {
+  margin-left: 18px;
+  margin-top: 18px;
+  border: none;
+  height: 36px;
+  width: fit-content;
 }
 
 .event {
