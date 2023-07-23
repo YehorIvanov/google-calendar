@@ -2,8 +2,8 @@
 .header {
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  padding-left: 60px;
+  padding: $main-font-size;
+  padding-left: (60px + $main-font-size);
   position: fixed;
   top: 0;
   z-index: 3;

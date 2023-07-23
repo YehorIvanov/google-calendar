@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 18px;
+  position: relative;
 }
 
 .button {
@@ -66,8 +66,8 @@
 .header {
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  padding-left: 60px;
+  padding: 18px;
+  padding-left: 78px;
   position: fixed;
   top: 0;
   z-index: 3;
@@ -107,6 +107,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
+  padding: 18px;
 }
 .calendar__body {
   display: flex;
@@ -117,8 +119,9 @@
   display: flex;
   flex-direction: row;
   padding-left: 60px;
+  padding-right: 18px;
   position: fixed;
-  top: 60px;
+  top: 73px;
   background-color: white;
   z-index: 3;
   width: 100%;
@@ -149,7 +152,7 @@
 }
 .calendar__day-label {
   height: 90px;
-  width: 15%;
+  width: 14.11%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -178,6 +181,7 @@
 
 .time-slot {
   height: 60px;
+  width: 100%;
 }
 .time-slot__time {
   top: 50px;
