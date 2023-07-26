@@ -3,37 +3,57 @@
   display: flex;
   flex-direction: column;
   align-items: end;
+  width: 100%;
   &__close-btn {
     border-radius: 50%;
-    height: $main-font-size * 2;
-    width: $main-font-size * 2;
+    height: $lower-font-size * 2;
+    width: $lower-font-size * 2;
+    margin: $main-font-size / 2;
+    // line-height: $main-font-size;
     border: none;
     transform: rotate(45deg);
     font-size: $hier-font-size;
-    color: $main-color;
+    color: $main-color-dark;
+    background-color: $main-color-light;
+    &:hover {
+      background-color: $main-color;
+      color: $main-bg-color;
+    }
   }
 }
 .event-form {
-  //   position: relative;
   display: flex;
   flex-direction: column;
-  height: 160;
-  flex-wrap: wrap;
+  height: 284px;
+  width: 400px;
+  padding: $main-font-size;
+  border-bottom-left-radius: $modal-border-radius;
+  border-bottom-right-radius: $modal-border-radius;
+  background-color: $main-bg-color;
+  align-items: center;
+  justify-content: space-around;
+  font-size: $hier-font-size;
+
   &__field {
-    margin-left: $main-font-size;
+    // margin-left: $main-font-size;
     margin-top: $main-font-size;
     border: none;
     border-bottom: 2px solid $main-color;
     color: $main-color;
     height: $main-font-size * 2;
+    font-size: $main-font-size;
     width: auto;
-    &:first-of-type {
-      //   width: 90%;
+    &[name="title"] {
+      width: 360px;
     }
-    &:last-of-type[type="text"] {
-      //   width: 90%;
-      height: $main-font-size * 4;
+    &[name="description"] {
+      width: 360px;
     }
+
+    // &: {
+    //   width: 360px;
+    // }
+
     &:hover {
       border: none;
       border-bottom: 2px solid $akcent-color;
@@ -49,13 +69,20 @@
     height: $main-font-size * 3;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
+
   &__submit-btn {
-    margin-left: $main-font-size;
-    margin-top: $main-font-size;
     border: none;
     height: $main-font-size * 2;
-    width: fit-content;
+    width: 68.5px;
+    align-self: flex-end;
+    border-radius: $main-border-radius;
+    // margin: $main-font-size / 4;
+    margin-top: auto;
+    background-color: $akcent-color;
+    color: $main-bg-color;
   }
 }
 // input[type="time"]::-webkit-calendar-picker-indicator {
