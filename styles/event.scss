@@ -1,17 +1,32 @@
 // стили отображаемого в календаре события
 .event {
-    border: 1px solid;
-    color: white;
-    background-color: #6495ed;
-    width: 120px;
-    border-radius: 5px;
-    z-index: 2;
-    &-title {
-    }
-    &-time{
-
-    }
-    &-description{
-
-    }
+  position: relative;
+  padding: $main-font-size / 2;
+  color: $main-bg-color;
+  background-color: $akcent-color;
+  width: 13vw;
+  border-radius: $modal-border-radius;
+  z-index: 2;
+  top: 2px;
+  left: 2px;
+  overflow: hidden;
+  box-shadow: $popup-shadow;
+  &:hover .event__description {
+    display: block;
+  }
+  &:hover {
+    height: auto !important;
+    width: auto !important;
+  }
+  &__title {
+    font-size: $hier-font-size;
+  }
+  &__time {
+    font-size: $lower-font-size;
+  }
+  &__description {
+    display: none;
+    font-size: $main-font-size;
+    background-color: $akcent-color;
+  }
 }

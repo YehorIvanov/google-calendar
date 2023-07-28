@@ -9,7 +9,6 @@
     height: $lower-font-size * 2;
     width: $lower-font-size * 2;
     margin: $main-font-size / 2;
-    // line-height: $main-font-size;
     border: none;
     transform: rotate(45deg);
     font-size: $hier-font-size;
@@ -35,7 +34,6 @@
   font-size: $hier-font-size;
 
   &__field {
-    // margin-left: $main-font-size;
     margin-top: $main-font-size;
     border: none;
     border-bottom: 2px solid $main-color;
@@ -49,11 +47,6 @@
     &[name="description"] {
       width: 360px;
     }
-
-    // &: {
-    //   width: 360px;
-    // }
-
     &:hover {
       border: none;
       border-bottom: 2px solid $akcent-color;
@@ -71,6 +64,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    // & input[type="date"]::-webkit-calendar-picker-indicator {
+    //   color: $main-color;
+    // }
   }
 
   &__submit-btn {
@@ -79,18 +75,15 @@
     width: 68.5px;
     align-self: flex-end;
     border-radius: $main-border-radius;
-    // margin: $main-font-size / 4;
     margin-top: auto;
     background-color: $akcent-color;
     color: $main-bg-color;
+    &:hover {
+      background-color: $akcent-color-dark;
+    }
   }
 }
-// input[type="time"]::-webkit-calendar-picker-indicator {
-//   display: none;
-//   //   float: left;
-// }
-// input[type="time" i]::-webkit-calendar-picker-indicator {
-//   content: "\1F4C5";
-//   color: white;
-//   font-size: 1.2em;
+
+// input[type="date"]::-webkit-calendar-picker-indicator {
+//   color: red;
 // }

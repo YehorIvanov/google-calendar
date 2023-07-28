@@ -7,10 +7,10 @@ export let storage = {
   events: [
     {
       id: 0.7520027086457333, // id понадобится для работы с событиями
-      title: "Title",
-      description: "Some description",
-      start: new Date("2023-07-12T12:10:00.000Z"),
-      end: new Date("2023-07-05T14:30:00.000Z"),
+      title: "Coffee with Hunny bun",
+      description: "Some descriptionwe will  go to our most likley koffee shop",
+      start: new Date("2023-07-27T09:10:00.000Z"),
+      end: new Date("2023-07-27T11:30:00.000Z"),
     },
     {
       id: 0.7520027086457353, // id понадобится для работы с событиями

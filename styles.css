@@ -19,6 +19,10 @@
   padding-left: 9px;
   padding-right: 9px;
 }
+.button:hover {
+  background-color: #f1f3f4;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+}
 
 .icon-button {
   outline: none;
@@ -41,6 +45,7 @@
   width: 400px;
   height: 320px;
   display: flex;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .overlay {
@@ -49,16 +54,37 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(112, 117, 122, 0.3);
+  background-color: transparent;
   z-index: 10;
 }
 
 .popup__content {
+  height: 126px;
   position: absolute;
   background: white;
   padding: 18px;
-  border: 1px solid;
   border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+}
+
+.edit-event-btn,
+.delete-event-btn {
+  width: 120px;
+  border: none;
+  border-bottom: 2px solid rgb(112, 117, 122);
+  color: rgb(112, 117, 122);
+  background-color: white;
+  height: 36px;
+  font-size: 18px;
+}
+.edit-event-btn:hover,
+.delete-event-btn:hover {
+  border-color: #1a73e8;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .hidden {
@@ -288,15 +314,42 @@
   background-color: #1a73e8;
   color: white;
 }
+.event-form__submit-btn:hover {
+  background-color: #3f51b5;
+}
 
 .event {
-  border: 1px solid;
+  position: relative;
+  padding: 9px;
   color: white;
-  background-color: #6495ed;
-  width: 120px;
-  border-radius: 5px;
+  background-color: #1a73e8;
+  width: 13vw;
+  border-radius: 9px;
   z-index: 2;
+  top: 2px;
+  left: 2px;
+  overflow: hidden;
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
+.event:hover .event__description {
+  display: block;
+}
+.event:hover {
+  height: auto !important;
+  width: auto !important;
+}
+.event__title {
+  font-size: 22.5px;
+}
+.event__time {
+  font-size: 13.5px;
+}
+.event__description {
+  display: none;
+  font-size: 18px;
+  background-color: #1a73e8;
+}
+
 * {
   box-sizing: border-box;
 }

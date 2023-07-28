@@ -12,6 +12,10 @@
   background-color: $main-bg-color;
   padding-left: ($main-font-size / 2);
   padding-right: ($main-font-size / 2);
+  &:hover {
+    background-color: $main-color-light;
+    box-shadow: $popup-shadow;
+  }
 }
 
 .icon-button {
@@ -36,6 +40,7 @@
     width: 400px;
     height: 320px;
     display: flex;
+    box-shadow: $popup-shadow;
   }
 }
 
@@ -45,17 +50,38 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(112, 117, 122, 0.3);
+  background-color: transparent;
+  // background-color: rgba(112, 117, 122, 0.05);
   z-index: 10;
 }
 
 .popup {
   &__content {
+    height: $main-font-size * 7;
     position: absolute;
     background: $main-bg-color;
     padding: $main-font-size;
-    border: 1px solid;
     border-radius: $modal-border-radius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: $popup-shadow;
+  }
+}
+
+.edit-event-btn,
+.delete-event-btn {
+  width: 120px;
+  border: none;
+  border-bottom: 2px solid $main-color;
+  color: $main-color;
+  background-color: $main-bg-color;
+  height: $main-font-size * 2;
+  font-size: $main-font-size;
+  &:hover {
+    border-color: $akcent-color;
+    box-shadow: $popup-shadow;
   }
 }
 
