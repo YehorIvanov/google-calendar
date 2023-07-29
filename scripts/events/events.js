@@ -9,9 +9,6 @@ const deleteEventBtn = document.querySelector(".delete-event-btn");
 const editEventBtn = document.querySelector(".edit-event-btn");
 
 function handleEventClick(event) {
-  // // если произошел клик по событию, то нужно паказать попап с кнопкой удаления
-  // // установите eventIdToDelete с id события в storage
-
   if (event.target.closest(".event")) {
     openPopup(event.clientX, event.clientY);
     setItem("eventIdToDelete", event.target.closest(".event").dataset.eventId);
@@ -35,7 +32,6 @@ function removeEventsFromCalendar() {
   Array.from(document.querySelectorAll(".event")).forEach((elem) =>
     elem.remove()
   );
-  // ф-ция для удаления всех событий с календаря
 }
 
 const createEventElement = (event) => {
@@ -57,20 +53,12 @@ const createEventElement = (event) => {
       `[data-day="${event.start.getDay()}"] [data-time="${event.start.getHours()}"]`
     )
     .appendChild(newEventElem);
-
-  // ф-ция создает DOM элемент события
-  // событие должно позиционироваться абсолютно внутри нужной ячейки времени внутри дня
-  // нужно добавить id события в дата атрибут
-  // здесь для создания DOM элемента события используйте document.createElement
 };
 
 export const renderEvents = () => {
   removeEventsFromCalendar();
 
   const displayedWeekStart = new Date(getItem("displayedWeekStart"));
-  // const displayedWeekEnd = new Date(
-  //   displayedWeekStart.getTime() + 1000 * 60 * 60 * 24 * 7
-  // );
   const eventsToRender = getItem("events");
   eventsToRender
     .filter((elem) => {
@@ -79,14 +67,6 @@ export const renderEvents = () => {
     .forEach((elem) => {
       createEventElement(elem);
     });
-  // const newEventElem = document.createElement('div');
-  // достаем из storage все события и дату понедельника отображаемой недели
-  // фильтруем события, оставляем только те, что входят в текущую неделю
-  // создаем для них DOM элементы с помощью createEventElement
-  // для каждого события находим на странице временную ячейку (.calendar__time-slot)
-  // и вставляем туда событие
-  // каждый день и временная ячейка должно содержать дата атрибуты, по которым можно будет найти нужную временную ячейку для события
-  // не забудьте удалить с календаря старые события перед добавлением новых
 };
 
 function onDeleteEvent() {
@@ -102,10 +82,6 @@ function onDeleteEvent() {
   } else {
     alert("Event start and duration must be a multiple of 15 minutes");
   }
-  // достаем из storage массив событий и eventIdToDelete
-  // удаляем из массива нужное событие и записываем в storage новый массив
-  // закрыть попап
-  // перерисовать события на странице в соответствии с новым списком событий в storage (renderEvents)
 }
 
 function onEditeEvent(event) {

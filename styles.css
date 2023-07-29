@@ -21,7 +21,10 @@
 }
 .button:hover {
   background-color: #f1f3f4;
-  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .icon-button {
@@ -45,7 +48,10 @@
   width: 400px;
   height: 320px;
   display: flex;
-  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .overlay {
@@ -68,7 +74,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .edit-event-btn,
@@ -84,7 +93,10 @@
 .edit-event-btn:hover,
 .delete-event-btn:hover {
   border-color: #1a73e8;
-  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .hidden {
@@ -94,6 +106,7 @@
 .header {
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: 18px;
   padding-left: 78px;
   position: fixed;
@@ -281,10 +294,10 @@
   font-size: 18px;
   width: auto;
 }
-.event-form__field[name=title] {
+.event-form__field[name="title"] {
   width: 360px;
 }
-.event-form__field[name=description] {
+.event-form__field[name="description"] {
   width: 360px;
 }
 .event-form__field:hover {
@@ -329,7 +342,10 @@
   top: 2px;
   left: 2px;
   overflow: hidden;
-  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 .event:hover .event__description {
   display: block;

@@ -64,9 +64,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    // & input[type="date"]::-webkit-calendar-picker-indicator {
-    //   color: $main-color;
-    // }
   }
 
   &__submit-btn {
@@ -83,7 +80,3 @@
     }
   }
 }
-
-// input[type="date"]::-webkit-calendar-picker-indicator {
-//   color: red;
-// }

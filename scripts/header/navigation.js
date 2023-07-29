@@ -42,8 +42,6 @@ const onChangeWeek = (event) => {
       break;
     }
   }
-  // при переключении недели обновите displayedWeekStart в storage
-  // и перерисуйте все необходимые элементы страницы (renderHeader, renderWeek, renderCurrentMonth)
   renderWeek();
   renderHeader();
   renderCurrentMonth();

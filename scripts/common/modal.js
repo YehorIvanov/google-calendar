@@ -1,5 +1,4 @@
 const modalElem = document.querySelector(".modal");
-// const modalContentElem = document.querySelector(".modal__content");
 
 function addTimeOptionsToElement(element) {
   element.innerHTML = "";

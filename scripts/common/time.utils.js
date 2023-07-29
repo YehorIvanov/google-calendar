@@ -1,7 +1,6 @@
 import shmoment from "./shmoment.js";
 import { getItem } from "./storage.js";
 
-// вернет дату понедельника той недели, в которую входит переданный день
 export const getStartOfWeek = (date) => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();

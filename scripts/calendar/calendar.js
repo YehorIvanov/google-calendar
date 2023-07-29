@@ -4,7 +4,6 @@ import { createNumbersArray } from "../common/createNumbersArray.js";
 
 const renderRedLine = () => {
   const date = new Date();
-
   let toRemoveElem = document.querySelector(".calendar__red-line");
   toRemoveElem ? toRemoveElem.remove() : toRemoveElem;
   toRemoveElem = document.querySelector(".calendar__red-dot");
@@ -42,8 +41,6 @@ const generateDay = () => {
     calendarDayElem.appendChild(calendarTimeSlotElem);
   });
   return calendarDayElem;
-  // функция должна сгенерировать и вернуть разметку дня в виде строки
-  // разметка состоит из 24 часовых временных слотов (.calendar__time-slot)
 };
 
 export const renderWeek = () => {
@@ -53,18 +50,10 @@ export const renderWeek = () => {
     .map((elem) => elem.getDay())
     .forEach((elem) => {
       const day = generateDay();
-      // day.dataset.day = elem;
       elem === 0 ? (day.dataset.day = 7) : (day.dataset.day = elem);
       calendarWeekElem.appendChild(day);
       window.scrollTo(0, 530);
     });
-
   renderRedLine();
   setInterval(renderRedLine, 60000);
-  // console.log(week);
-  // функция должна сгенерировать разметку недели в виде строки и вставить ее на страницу (в .calendar__week)
-  // разметка недели состоит из 7 дней (.calendar__day) отображаемой недели
-  // массив дней, которые нужно отобразить, считаем ф-цией generateWeekRange на основе displayedWeekStart из storage
-  // каждый день должен содержать в дата атрибуте порядковый номер дня в месяце
-  // после того, как отрисовали всю сетку для отображаемой недели, нужно отобразить события этой недели с помощью renderEvents
 };
