@@ -13,10 +13,13 @@
   box-shadow: $popup-shadow;
   &:hover .event__description {
     display: block;
+    margin-right: 8px;
+    overflow-y: scroll;
   }
   &:hover {
-    height: auto !important;
-    width: auto !important;
+    // max-height: auto !important;
+    // width: auto !important;
+    overflow-y: scroll;
   }
   &__title {
     font-size: $hier-font-size;
@@ -28,5 +31,6 @@
     display: none;
     font-size: $main-font-size;
     background-color: $akcent-color;
+    margin-right: 8px;
   }
 }

@@ -24,13 +24,18 @@ export const isValidEvent = (newEventObj, eventsArr) => {
     eventsArr
       .filter((elem) => {
         return elem.id !== newEventObj.id;
+      }).map((elem) => {
+        const result = elem;
+        result.start = new Date(elem.start)
+        result.end = new Date(elem.end);
+        return result;
       })
       .every((elem) => {
         return elem.start >= newEventObj.end || elem.end <= newEventObj.start;
       })
       ? ""
       : "Two events cannot overlap in time \n"
-  );
+  ); 
   alertMassage = alertMassage.concat(
     newEventObj.start.getMinutes() % 15 !== 0 ||
       newEventObj.end.getMinutes() % 15 !== 0
@@ -46,7 +51,14 @@ export const isValidEvent = (newEventObj, eventsArr) => {
 
 export const isDeletable = (eventsArr, eventIdToDelete) => {
   const timeToStartEvent =
-    eventsArr.filter((elem) => {
+    eventsArr
+    .map((elem) => {
+      const result = elem;
+      result.start = new Date(elem.start)
+      result.end = new Date(elem.end);
+      return result;
+    })
+    .filter((elem) => {
       return elem.id.toString() == eventIdToDelete.toString();
     })[0].start - new Date();
   return timeToStartEvent < 900000;

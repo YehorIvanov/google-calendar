@@ -23,6 +23,9 @@ export const openModal = (
     description = "",
   }
 ) => {
+  // console.log(id, start, end, title, description);
+  start = new Date(start);
+  end = new Date(end);
   if (id) {
     const idInputElem = document.querySelector('[name="id"]');
     idInputElem.value = id;

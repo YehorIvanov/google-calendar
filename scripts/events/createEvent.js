@@ -7,6 +7,9 @@ import { isValidEvent } from "./validation.js";
 const eventFormElem = document.querySelector(".event-form");
 const closeEventFormBtn = document.querySelector(".create-event__close-btn");
 
+function getNewId()  {
+  return new Date().getTime();
+};
 function clearEventForm() {
   eventFormElem.reset();
 }
@@ -30,7 +33,7 @@ function onCreateEvent(event) {
 
   if (isValidEvent(newEventObj, eventsArr)) {
     if (!newEventObj.id) {
-      newEventObj.id = Math.random();
+      newEventObj.id = getNewId();
       eventsArr.push(newEventObj);
     } else {
       const foundIndex = eventsArr.findIndex(

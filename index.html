@@ -39,6 +39,12 @@
           <i data-direction="next" class="fas fa-chevron-right"></i>
         </button>
         <span class="navigation__displayed-month"></span>
+        <button
+          data-direction="setings"
+          class="icon-button navigation__nav-icon"
+        >
+          <i data-direction="setings" class="fas fa-cog"></i>
+        </button>
       </div>
     </header>
     <section class="calendar">
@@ -97,6 +103,30 @@
       <div class="popup__content">
         <button class="edit-event-btn">Edit</button>
         <button class="delete-event-btn">Delete</button>
+      </div>
+    </div>
+    <div class="setings hidden overlay">
+      <!-- <div class="setings__overlay"></div> -->
+      <div class="setings__content">
+        <h3 class="setings__title">Setings</h3>
+        <div class="setings-color">
+          <h4 class="setings-color__title">Color</h4>
+          <div class="setings-color__content"></div>
+          <div class="setings-color__option-box">
+            <input type="radio" id="color-blue" name="color" value="blue" />
+            <label for="color-blue">Blue</label>
+          </div>
+          <div class="setings-color__option-box">
+            <input type="radio" id="color-green" name="color" value="green" />
+            <label for="color-green">Green</label>
+          </div>
+          <div class="setings-color__option-box">
+            <input type="radio" id="color-red" name="color" value="red" />
+            <label for="color-red">Red</label>
+          </div>
+        </div>
+        <!-- <button class="">Blue</button> -->
+        <!-- <button class="">Red</button> -->
       </div>
     </div>
     <script src="scripts/index.js" type="module"></script>

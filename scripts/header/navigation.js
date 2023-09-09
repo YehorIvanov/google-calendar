@@ -3,6 +3,7 @@ import { renderWeek } from "../calendar/calendar.js";
 import { renderHeader } from "../calendar/header.js";
 import { getStartOfWeek, getDisplayedMonth } from "../common/time.utils.js";
 import { renderEvents } from "../events/events.js";
+import { openSetingsModal } from "./setings.js";
 
 const navElem = document.querySelector(".navigation");
 const displayedMonthElem = document.querySelector(
@@ -13,8 +14,6 @@ function renderCurrentMonth() {
   displayedMonthElem.innerHTML = getDisplayedMonth(
     getItem("displayedWeekStart")
   );
-  // отрисовать месяц, к которому относиться текущая неделя (getDisplayedMonth)
-  // вставить в .navigation__displayed-month
 }
 
 const onChangeWeek = (event) => {
@@ -39,6 +38,10 @@ const onChangeWeek = (event) => {
           getItem("displayedWeekStart").getTime() + 7 * 24 * 60 * 60 * 1000
         )
       );
+      break;
+    }
+    case "setings": {
+      openSetingsModal();
       break;
     }
   }

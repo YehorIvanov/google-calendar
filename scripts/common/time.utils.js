@@ -67,11 +67,12 @@ const displayedWeekStart = new Date(getItem("displayedWeekStart"));
 const displayedWeekEnd = new Date(
   displayedWeekStart.getTime() + 1000 * 60 * 60 * 24 * 7
 );
- export const isInDisplayedWeek = (date) => {
+ export const isInDisplayedWeek = (dateStr) => {
+  const date = new Date(dateStr);
   const displayedWeekStart = new Date(getItem("displayedWeekStart"));
   const displayedWeekEnd = new Date(
     displayedWeekStart.getTime() + 1000 * 60 * 60 * 24 * 7
   );
-  return date >= displayedWeekStart && date < displayedWeekEnd;
+    return date >= displayedWeekStart && date < displayedWeekEnd;
 };
 

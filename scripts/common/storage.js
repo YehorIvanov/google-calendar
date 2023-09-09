@@ -18,14 +18,41 @@ export let storage = {
     },
   ],
 };
+export function setItem(key, value) {
+  if (typeof value === 'object' && value !== null) {
+    value = JSON.stringify(value);
+  }
+  localStorage.setItem(key, value);
+}
 
-export const setItem = (key, value) => {
-  storage[key] = value;
-};
+export function getItem(key) {
+  const storedValue = localStorage.getItem(key);
+  try {
+    const parsedValue = JSON.parse(storedValue);
+    if (typeof parsedValue === 'string' && /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{3})Z$/.test(parsedValue)) {
+      return new Date(parsedValue);
+    }
+    return parsedValue;
+  } catch (error) {
+    return storedValue;
+  }
+}
+// export const setItem = (key, value) => {
+//   console.log(value, JSON.stringify(value), new Date(JSON.stringify(value)));
+//   localStorage.setItem(key, JSON.stringify(value));
+//   // storage[key] = value;
+// };
 
-export const getItem = (key) => {
-  return storage[key];
-};
+// export const getItem = (key) => {
+//   // return storage[key];
+//   const value = JSON.parse(localStorage.getItem(key));
+//   if (value ) {
+//     return new Date(value);
+//   }
+
+
+//   return JSON.parse(localStorage.getItem(key));
+// };
 
 const eventExample = {
   id: 0.7520027086457333,

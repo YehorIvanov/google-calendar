@@ -34,7 +34,10 @@ function removeEventsFromCalendar() {
   );
 }
 
-const createEventElement = (event) => {
+const createEventElement = (eventObj) => {
+  const event = eventObj;
+  event.start = new Date(event.start);
+  event.end = new Date(event.end);
   const newEventElem = document.createElement("div");
   newEventElem.dataset.eventId = event.id;
   newEventElem.classList.add("event");
@@ -47,10 +50,10 @@ const createEventElement = (event) => {
   newEventElem.style.top = `${event.start.getMinutes()}px`;
   newEventElem.style.height = `${(event.end - event.start) / (60 * 1000)}px`;
   newEventElem.addEventListener("click", handleEventClick);
-
+  console.log(event.start.getDay())
   document
     .querySelector(
-      `[data-day="${event.start.getDay()}"] [data-time="${event.start.getHours()}"]`
+      `[data-day="${event.start.getDay() == 0 ? 7 : event.start.getDay()}"] [data-time="${event.start.getHours()}"]`
     )
     .appendChild(newEventElem);
 };
@@ -59,7 +62,11 @@ export const renderEvents = () => {
   removeEventsFromCalendar();
 
   const displayedWeekStart = new Date(getItem("displayedWeekStart"));
-  const eventsToRender = getItem("events");
+  let eventsToRender = getItem("events");
+  if (!Array.isArray(eventsToRender)) {
+    setItem('events', []);
+    eventsToRender = [];
+  }
   eventsToRender
     .filter((elem) => {
       return isInDisplayedWeek(elem.start);
