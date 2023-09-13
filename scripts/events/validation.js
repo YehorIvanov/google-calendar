@@ -59,7 +59,7 @@ export const isDeletable = (eventsArr, eventIdToDelete) => {
       return result;
     })
     .filter((elem) => {
-      return elem.id.toString() == eventIdToDelete.toString();
+      return elem.id.toString() === eventIdToDelete.toString();
     })[0].start - new Date();
   return timeToStartEvent < 900000;
 };

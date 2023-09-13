@@ -101,25 +101,47 @@
     flex-direction: column;
     box-shadow: $popup-shadow;
     padding: $main-font-size;
+
+    &-ok-btn {
+      border: none;
+      height: $main-font-size * 2;
+      width: 68.5px;
+      align-self: flex-end;
+      border-radius: $main-border-radius;
+      margin-top: auto;
+      background-color: $akcent-color;
+      color: $main-bg-color;
+    }
   }
+
   &__title {
     text-align: center;
     margin-top: 0px;
   }
-
-  .setings-color {
-    &__title {
-      margin-top: 0px;
-      margin-bottom: $main-font-size / 2;
-    }
-    &__content {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    &__option-box {
-      margin-bottom: $main-font-size / 4;
-    }
+}
+.setings-color {
+  &__title {
+    margin-top: 0px;
+    margin-bottom: $main-font-size / 2;
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__option-box {
+    margin-bottom: $main-font-size / 4;
+  }
+}
+.akcent-color {
+  &__blue {
+    background-color: #1a73e8;
+  }
+  &__red {
+    background-color: red;
+  }
+  &__green {
+    background-color: green;
   }
 }
 

@@ -11,14 +11,23 @@
   left: 2px;
   overflow: hidden;
   box-shadow: $popup-shadow;
+  &_blue {
+    background-color: $akcent-color;
+  }
+  &_red {
+    background-color: $akcent-color-red;
+  }
+  &_green {
+    background-color: $akcent-color-green;
+  }
   &:hover .event__description {
     display: block;
     margin-right: 8px;
     overflow-y: scroll;
   }
   &:hover {
-    // max-height: auto !important;
-    // width: auto !important;
+    max-height: auto !important;
+    width: auto !important;
     overflow-y: scroll;
   }
   &__title {

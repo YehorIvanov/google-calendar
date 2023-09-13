@@ -111,22 +111,29 @@
         <h3 class="setings__title">Setings</h3>
         <div class="setings-color">
           <h4 class="setings-color__title">Color</h4>
-          <div class="setings-color__content"></div>
-          <div class="setings-color__option-box">
-            <input type="radio" id="color-blue" name="color" value="blue" />
-            <label for="color-blue">Blue</label>
-          </div>
-          <div class="setings-color__option-box">
-            <input type="radio" id="color-green" name="color" value="green" />
-            <label for="color-green">Green</label>
-          </div>
-          <div class="setings-color__option-box">
-            <input type="radio" id="color-red" name="color" value="red" />
-            <label for="color-red">Red</label>
+          <div class="setings-color__content">
+            <div class="setings-color__option-box">
+              <input
+                type="radio"
+                data-color="blue"
+                id="color-blue"
+                name="color"
+                value="blue"
+              />
+              <label for="color-blue">Blue</label>
+            </div>
+            <div class="setings-color__option-box">
+              <input type="radio" id="color-green" name="color" value="green" />
+              <label for="color-green">Green</label>
+            </div>
+            <div class="setings-color__option-box">
+              <input type="radio" id="color-red" name="color" value="red" />
+              <label for="color-red">Red</label>
+            </div>
           </div>
         </div>
-        <!-- <button class="">Blue</button> -->
-        <!-- <button class="">Red</button> -->
+
+        <button class="setings__content-ok-btn">OK</button>
       </div>
     </div>
     <script src="scripts/index.js" type="module"></script>

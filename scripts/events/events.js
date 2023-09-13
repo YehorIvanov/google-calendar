@@ -16,9 +16,10 @@ function handleEventClick(event) {
   } else if (event.target.closest(".calendar__time-slot")) {
     const startDate = new Date();
     startDate.setHours(event.target.dataset.time.toString().padStart(2, "0"));
-    startDate.setMonth(getItem("displayedWeekStart").getMonth());
+    startDate.setMonth(new Date(getItem("displayedWeekStart")).getMonth());
+    // startDate.setMonth(getItem("displayedWeekStart").getMonth());
     startDate.setDate(
-      getItem("displayedWeekStart").getDate() +
+      new Date(getItem("displayedWeekStart")).getDate() +
         +event.target.parentNode.dataset.day -
         1
     );
@@ -41,6 +42,7 @@ const createEventElement = (eventObj) => {
   const newEventElem = document.createElement("div");
   newEventElem.dataset.eventId = event.id;
   newEventElem.classList.add("event");
+  newEventElem.classList.add(`event_${getItem('akcentColor')}`);
   newEventElem.innerHTML = `
     <div class="event__title">${event.title}</div>
     <div class="event__time">${event.start.getHours()}:${event.start.getMinutes()}-${event.end.getHours()}:${event.end.getMinutes()}</div>
@@ -50,7 +52,6 @@ const createEventElement = (eventObj) => {
   newEventElem.style.top = `${event.start.getMinutes()}px`;
   newEventElem.style.height = `${(event.end - event.start) / (60 * 1000)}px`;
   newEventElem.addEventListener("click", handleEventClick);
-  console.log(event.start.getDay())
   document
     .querySelector(
       `[data-day="${event.start.getDay() == 0 ? 7 : event.start.getDay()}"] [data-time="${event.start.getHours()}"]`

@@ -19,23 +19,26 @@ export let storage = {
   ],
 };
 export function setItem(key, value) {
-  if (typeof value === 'object' && value !== null) {
-    value = JSON.stringify(value);
-  }
-  localStorage.setItem(key, value);
+  // if (typeof value === 'object' && value !== null) {
+  //   value = JSON.stringify(value);
+  // }
+  // localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 export function getItem(key) {
   const storedValue = localStorage.getItem(key);
-  try {
-    const parsedValue = JSON.parse(storedValue);
-    if (typeof parsedValue === 'string' && /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{3})Z$/.test(parsedValue)) {
-      return new Date(parsedValue);
-    }
-    return parsedValue;
-  } catch (error) {
-    return storedValue;
-  }
+  const parsedValue = JSON.parse(storedValue);
+  // try {
+  //   const parsedValue = JSON.parse(storedValue);
+  //   if (typeof parsedValue === 'string' && /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{3})Z$/.test(parsedValue)) {
+  //     return new Date(parsedValue);
+  //   }
+  //   return parsedValue;
+  // } catch (error) {
+  //   return storedValue;
+  // }
+  return parsedValue;
 }
 // export const setItem = (key, value) => {
 //   console.log(value, JSON.stringify(value), new Date(JSON.stringify(value)));

@@ -20,6 +20,7 @@ export const renderHeader = () => {
       num.getDate() === new Date().getDate()
     ) {
       dayNamberElem.classList.add("day-label__day-namber_current");
+      dayNamberElem.classList.add(`day-label__day-namber_current-${getItem('akcentColor')}`);
     }
     const dayLabelElem = document.createElement("div");
     dayLabelElem.classList.add("calendar__day-label", "day-label");

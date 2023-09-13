@@ -105,21 +105,42 @@
   box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
   padding: 18px;
 }
+.setings__content-ok-btn {
+  border: none;
+  height: 36px;
+  width: 68.5px;
+  align-self: flex-end;
+  border-radius: 4.5px;
+  margin-top: auto;
+  background-color: #1a73e8;
+  color: white;
+}
 .setings__title {
   text-align: center;
   margin-top: 0px;
 }
-.setings .setings-color__title {
+
+.setings-color__title {
   margin-top: 0px;
   margin-bottom: 9px;
 }
-.setings .setings-color__content {
+.setings-color__content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.setings .setings-color__option-box {
+.setings-color__option-box {
   margin-bottom: 4.5px;
+}
+
+.akcent-color__blue {
+  background-color: #1a73e8;
+}
+.akcent-color__red {
+  background-color: red;
+}
+.akcent-color__green {
+  background-color: green;
 }
 
 .hidden {
@@ -272,6 +293,15 @@
   text-align: center;
   color: white;
 }
+.day-label__day-namber_current-green {
+  background-color: green;
+}
+.day-label__day-namber_current-red {
+  background-color: red;
+}
+.day-label__day-namber_current-blue {
+  background-color: #1a73e8;
+}
 
 .create-event {
   display: flex;
@@ -367,12 +397,23 @@
   overflow: hidden;
   box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
+.event_blue {
+  background-color: #1a73e8;
+}
+.event_red {
+  background-color: red;
+}
+.event_green {
+  background-color: green;
+}
 .event:hover .event__description {
   display: block;
   margin-right: 8px;
   overflow-y: scroll;
 }
 .event:hover {
+  max-height: auto !important;
+  width: auto !important;
   overflow-y: scroll;
 }
 .event__title {
